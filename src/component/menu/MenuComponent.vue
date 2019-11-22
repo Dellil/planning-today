@@ -3,10 +3,9 @@
     app
     clipped
     >
-
         <div class="d-flex flex-column justify-space-between" id="menu-container">
-            <app-list class="mt-4"></app-list>
-            <app-calendar class="mb-4"></app-calendar>
+            <app-list></app-list>
+            <app-calendar></app-calendar>
         </div>
                     
     </v-navigation-drawer>
@@ -32,6 +31,9 @@ export default {
 </script>
 
 <style>
+    v-navigation-drawer {
+        overflow: hidden;
+    }
     #menu-container {
         height: 100%;
     }

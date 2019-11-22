@@ -1,8 +1,9 @@
 <template>
     <v-sheet
+    class="mb-n1"
     height="300"
     >
-        <v-calendar
+        <v-calendar 
         type="month"
         >
         </v-calendar>

@@ -1,5 +1,5 @@
 <template>
-    <v-list>
+    <v-list class="mt-4">
         <v-list-item-group mandatory>
             <v-list-item
             v-for="(item, i) in items"
