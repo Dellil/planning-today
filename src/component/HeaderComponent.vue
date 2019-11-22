@@ -3,7 +3,7 @@
     app 
     clipped-left
     >
-        <v-toolbar-title>Planning</v-toolbar-title>
+        <v-toolbar-title>PLANNING</v-toolbar-title>
     </v-app-bar>
 </template>
 
