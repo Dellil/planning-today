@@ -6,6 +6,9 @@
             :key = "i"
             class="pa-3"
             >
+                    <v-list-item-icon>
+                        <v-icon v-text="item.icon"></v-icon>
+                    </v-list-item-icon>
                 <v-list-item-content>
                     <v-list-item-title v-text="item.title"></v-list-item-title>
                     <v-list-item-subtitle v-text="item.subtitle"></v-list-item-subtitle>
@@ -16,6 +19,7 @@
 </template>
 
 <script>
+import { mdiPlaylistEdit, mdiCalendarRange } from '@mdi/js';
 export default {
     data() {
         return {
@@ -24,12 +28,12 @@ export default {
                 {
                     title : "CHECK-LIST",
                     subtitle: "PLAN YOUR TODAY",
-                    icon : ""
+                    icon : mdiPlaylistEdit
                 },
                 {
                     title : "SET THE DATE RANGE",
-                    subtitle: "정공용",
-                    icon : ""
+                    subtitle: "WORKS DATE RANGE",
+                    icon : mdiCalendarRange
                 }
             ]
         }

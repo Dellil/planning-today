@@ -31,9 +31,6 @@ export default {
 </script>
 
 <style>
-    v-navigation-drawer {
-        overflow: hidden;
-    }
     #menu-container {
         height: 100%;
     }

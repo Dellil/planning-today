@@ -2,7 +2,11 @@ import Vue from 'vue';
 import Vuetify from "vuetify/lib";
 
 
-const opts = {};
+const opts = {
+    icons: {
+        iconfont: 'mdiSvg'
+    }
+};
 
 Vue.use(Vuetify);
 
