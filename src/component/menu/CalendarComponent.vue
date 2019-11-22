@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style>
-#calendar_sheet {
+#calendar-sheet {
     overflow: hidden
 }
 </style>
