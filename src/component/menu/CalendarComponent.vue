@@ -1,8 +1,6 @@
 <template>
     <v-sheet
-    class="mb-n2"
-    height="300"
-    id="calendar_sheet"
+    height="40%"
     >
         <v-calendar 
         type="month"
@@ -22,7 +20,5 @@ export default {
 </script>
 
 <style>
-#calendar-sheet {
-    overflow: hidden
-}
+
 </style>

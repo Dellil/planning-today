@@ -4,11 +4,11 @@
             <v-list-item
             v-for="(item, i) in items"
             :key = "i"
-            class="pa-3"
+            @click="vItemTouched(i)"
             >
-                    <v-list-item-icon>
-                        <v-icon v-text="item.icon"></v-icon>
-                    </v-list-item-icon>
+                <v-list-item-icon>
+                    <v-icon v-text="item.icon"></v-icon>
+                </v-list-item-icon>
                 <v-list-item-content>
                     <v-list-item-title v-text="item.title"></v-list-item-title>
                     <v-list-item-subtitle v-text="item.subtitle"></v-list-item-subtitle>
@@ -20,6 +20,8 @@
 
 <script>
 import { mdiPlaylistEdit, mdiCalendarRange } from '@mdi/js';
+import eventBus from '../../utils/eventBus';
+
 export default {
     data() {
         return {
@@ -37,7 +39,13 @@ export default {
                 }
             ]
         }
-    }
+    },
+
+    methods: {
+        vItemTouched: function (i) {
+            eventBus.$emit("getContentIndex", i);
+        }
+    },
 }
 </script>
 
