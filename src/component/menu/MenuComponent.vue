@@ -6,8 +6,7 @@
         <div class="d-flex flex-column justify-space-between" id="menu-container">
             <app-list></app-list>
             <app-calendar></app-calendar>
-        </div>
-                    
+        </div>     
     </v-navigation-drawer>
 </template>
 
@@ -33,5 +32,6 @@ export default {
 <style>
     #menu-container {
         height: 100%;
+        overflow: hidden;
     }
 </style>

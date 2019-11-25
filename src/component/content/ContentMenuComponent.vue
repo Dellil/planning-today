@@ -1,17 +1,20 @@
 <template>
     <v-row>
         <v-col>
-            <v-btn
-            large
-            >
-            Create
-            </v-btn>
-            <v-btn
-            large
-            class="ml-4"
-            >
-            Delete
-            </v-btn>
+            <div class="ml-4">
+                <v-btn
+                large
+                >
+                Create
+                </v-btn>
+                <v-btn
+                large
+                class="ml-4"
+                >
+                Delete
+                </v-btn>
+            </div>
+            
         </v-col>
     </v-row>
 </template>

@@ -4,7 +4,7 @@
         class="d-flex justify-center">
             <app-content-shell></app-content-shell>
         </v-sheet> -->
-        <v-container>
+        <v-container fill-height>
             <app-content-menu></app-content-menu>
             <app-content-shell></app-content-shell>
         </v-container>
