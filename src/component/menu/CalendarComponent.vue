@@ -6,7 +6,6 @@
     >
         <v-calendar 
         type="month"
-        
         >
         </v-calendar>
     </v-sheet>

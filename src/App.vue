@@ -12,14 +12,14 @@
 <script>
 import HeaderComponent from './component/HeaderComponent.vue';
 import MenuComponent from './component/menu/MenuComponent.vue';
-import ContentComponent from './component/content/ContentComponent.vue';
+import ContentDomainComponent from './component/content/ContentDomainComponent.vue';
 import FooterComponent from './component/FooterComponent.vue';
 
 export default {
     components : {
         'app-header': HeaderComponent,
         'app-menu': MenuComponent,
-        'app-content': ContentComponent,
+        'app-content': ContentDomainComponent,
         'app-footer': FooterComponent
     },
     // data() {

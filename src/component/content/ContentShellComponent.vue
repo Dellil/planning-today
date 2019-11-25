@@ -13,8 +13,8 @@ export default {
 
 <style>
 #content-shell{
-    width: 95%;
-    height: 95%;
+    width: 100%;
+    height: 100%;
     background-color: white;
 }
 </style>
