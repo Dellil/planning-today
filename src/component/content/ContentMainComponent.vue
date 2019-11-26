@@ -15,7 +15,11 @@
 
                 @click="btnClicked(item)"
                 >
-                    <v-icon v-text="item.icon" :color="item.iconColor"></v-icon>
+                    <v-icon 
+                    v-text="item.icon" 
+                    :color="item.iconColor"
+                    >
+                    </v-icon>
                 </v-btn>
             </v-col>
             <v-col 
@@ -34,7 +38,10 @@
                 block
                 text
                 >
-                    <v-icon v-text="mdiDelete"></v-icon>
+                    <v-icon 
+                    v-text="mdiDelete"
+                    >
+                    </v-icon>
                 </v-btn>
             </v-col>
         </v-row>
@@ -108,15 +115,13 @@ export default {
     },
     methods: {
         btnClicked: function(item){
-            if(!item.isChecked){
-                item.isChecked = !item.isChecked;
-                item.textState = !item.textState;
+            if(!item.isChecked){    
                 item.color = 'grey darken-1';
             }else{
-                item.isChecked = !item.isChecked;
-                item.textState = !item.textState;
                 item.color = 'white';
             }
+            item.isChecked = !item.isChecked;
+            item.textState = !item.textState;
         }
     },
 }
