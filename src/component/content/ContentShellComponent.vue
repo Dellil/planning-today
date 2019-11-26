@@ -10,15 +10,8 @@
             height="100%"
             class="ml-4"
             >
-                <template
-                v-if="componentIdx == 0"
-                >
-                    <app-content-main></app-content-main>
-                </template>
-                <template
-                v-else
-                >
-                    <app-content-set-date></app-content-set-date>
+                <template>
+                    <component :is="componentInstance" />
                 </template>
             </v-sheet>
         </v-col>
@@ -28,14 +21,7 @@
 <script>
 import eventBus from '../../utils/eventBus.js';
 
-import ContentMainComponent from './ContentMainComponent.vue';
-import ContentSetDateComponent from './ContentSetDateComponent.vue';
-
 export default {
-    components: {
-        'app-content-main': ContentMainComponent,
-        'app-content-set-date': ContentSetDateComponent
-    },
     data() {
         return {
             componentIdx : 0
@@ -44,6 +30,12 @@ export default {
     methods: {
         changeContentIdx: function(idx){
             this.componentIdx = idx;
+        }
+    },
+    computed: {
+        componentInstance() {
+            const name = this.componentIdx == 0 ? 'ContentMainComponent' : 'ContentSetDateComponent'
+            return () => import(`./${name}.vue`)
         }
     },
     mounted: function() {
