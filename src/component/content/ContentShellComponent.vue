@@ -34,8 +34,8 @@ export default {
     },
     computed: {
         componentInstance() {
-            const name = this.componentIdx == 0 ? 'ContentMainComponent' : 'ContentSetDateComponent'
-            return () => import(`./${name}.vue`)
+            const name = this.componentIdx == 0 ? 'ContentMainComponent' : 'ContentSetDateComponent';
+            return () => import(`./${name}.vue`);
         }
     },
     mounted: function() {

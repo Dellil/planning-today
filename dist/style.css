@@ -1,11 +1,6 @@
 
-#children {
-    color: red;
-}
-
-
-#app {
-    font-size: 18px;
-    color: blue;
+#menu-container {
+    height: 100%;
+    overflow: hidden;
 }
 
