@@ -1,11 +1,14 @@
 <template>
-    <div id="app" ref="container">
+    <div id="app">
         <v-app>
             <app-header></app-header>
             <app-menu></app-menu>
             <app-content></app-content>
             <app-footer></app-footer>
             <app-snack-bar></app-snack-bar>
+            <!-- <v-overlay>
+                하와와와
+            </v-overlay> -->
         </v-app>
     </div>
 </template>
@@ -15,7 +18,8 @@ import HeaderComponent from './component/HeaderComponent.vue';
 import MenuComponent from './component/menu/MenuComponent.vue';
 import ContentDomainComponent from './component/content/ContentDomainComponent.vue';
 import FooterComponent from './component/FooterComponent.vue';
-import SnackBarComponent from './component/SnackBarComponent.vue';
+import SnackBarComponent from './component/fixed/SnackBarComponent.vue';
+
 
 export default {
     components : {

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import eventBus from '../utils/eventBus.js';
+import eventBus from '../../utils/eventBus.js';
 
 export default {
     data() {
@@ -24,16 +24,15 @@ export default {
             timeout: 2000
         }
     },
-    methods: {
-        changeSnack: function(options){
-            console.log("event arrived");
-            this.text = options.text;
-            this.show = true;
-        }
-    },
     mounted() {
         eventBus.$on("setSnackBar", this.changeSnack);
     },
+    methods: {
+        changeSnack: function(options){
+            this.text = options.text;
+            this.show = true;
+        }
+    }
 }
 </script>
 

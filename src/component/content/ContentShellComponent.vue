@@ -27,9 +27,13 @@ export default {
             componentIdx : 0
         }
     },
+    mounted() {
+        eventBus.$on("getContentIndex", this.changeContentIdx);
+    },
     methods: {
         changeContentIdx: function(idx){
             this.componentIdx = idx;
+            eventBus.$emit("passIdxToCreateBtn", this.componentIdx);
         }
     },
     computed: {
@@ -38,9 +42,6 @@ export default {
             return () => import(`./${name}.vue`);
         }
     },
-    mounted: function() {
-        eventBus.$on("getContentIndex", this.changeContentIdx);
-    }
 }
 </script>
 

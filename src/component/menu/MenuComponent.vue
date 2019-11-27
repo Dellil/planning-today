@@ -3,7 +3,9 @@
     app
     clipped
     >
-        <div class="d-flex flex-column justify-space-between" id="menu-container">
+        <div 
+        class="d-flex flex-column justify-space-between" 
+        >
             <app-list></app-list>
             <app-calendar></app-calendar>
         </div>     
@@ -19,19 +21,10 @@ export default {
     components: {
         'app-calendar': CalendarComponent,
         'app-list': ListComponent
-    },
-    mounted(){
-        // setInterval(() => {
-        //     this.drawer = !this.drawer
-        // }, 2000)();
     }
-
 }
 </script>
 
 <style>
-    #menu-container {
-        height: 100%;
-        overflow: hidden;
-    }
+
 </style>

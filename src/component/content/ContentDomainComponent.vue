@@ -1,8 +1,7 @@
 <template>
     <v-content>
         <v-container 
-        fill-height 
-        class="ml-4"
+        fill-height
         >
             <app-content-menu></app-content-menu>
             <app-content-shell></app-content-shell>

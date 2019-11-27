@@ -1,11 +1,14 @@
 <template>
     <v-sheet
+    class="mt-12"
     height="40%"
     >
-        <v-calendar 
-        type="month"
+        <v-date-picker
+        width="100%"
+        height="100%"
+        v-model="picker"
         >
-        </v-calendar>
+        </v-date-picker>
     </v-sheet>
 </template>
 
@@ -13,7 +16,7 @@
 export default {
     data() {
         return {
-
+            picker: new Date().toISOString().substr(0, 10)
         }
     }
 }

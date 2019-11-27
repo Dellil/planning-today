@@ -16,7 +16,7 @@
                     :text="item.textState"
                     :color="item.color"
                     @click="checkBtnClicked(item)"
-                    class="ml-1"
+                    class="ml-2"
                     >
                         <v-icon
                         v-text="item.icon" 
@@ -34,7 +34,7 @@
                     <v-btn
                     block
                     text
-                    class="ml-n1"
+                    class="ml-n2"
                     @click="deleteBtnClicked(item.idx)"
                     >
                         <v-icon>
@@ -66,7 +66,6 @@ export default {
                     icon: mdiCheck,
                     iconColor: "white",
                     text: '새벽기상',
-                    order:1,
                     idx: 1
                 },
                 {
@@ -76,7 +75,6 @@ export default {
                     icon: mdiCheck,
                     iconColor: "white",
                     text: '알고리즘 문제 풀기',
-                    order:1,
                     idx: 2
                 },
                 {
@@ -86,7 +84,6 @@ export default {
                     icon: mdiCheck,
                     iconColor: "white",
                     text: '독서',
-                    order:2,
                     idx: 3
                 },
                 {
@@ -96,7 +93,6 @@ export default {
                     icon: mdiCheck,
                     iconColor: "white",
                     text: '집안일',
-                    order:3,
                     idx: 4
                 },
                 {
@@ -106,7 +102,6 @@ export default {
                     icon: mdiCheck,
                     iconColor: "white",
                     text: '롸?',
-                    order:4,
                     idx: 5
                 }
             ]
@@ -123,8 +118,7 @@ export default {
             item.textState = !item.textState;
         },
         deleteBtnClicked: function(idx){
-            console.log("delete button clicked");
-            eventBus.$emit("setSnackBar", { text: 'Removed Successfully!' });
+            eventBus.$emit("setSnackBar", { text: 'Check List Item Removed Successfully!', component: 'main', idx: idx });
         }
     },
 }
