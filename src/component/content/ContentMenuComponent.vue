@@ -14,29 +14,29 @@
                 >
                 Delete
                 </v-btn>
+                <app-item-overlay :value="isOverlaied" @overlayClosed="changeOverlayState"></app-item-overlay>
             </div>
         </v-col>
     </v-row>
 </template>
 
 <script>
-import eventBus from '../../utils/eventBus.js';
-
+import ItemOverlay from '../fixed/ItemOverlay.vue';
 export default {
+    components: {
+        'app-item-overlay': ItemOverlay
+    },
     data() {
         return {
-            idx: 0
+            isOverlaied: false
         }
     },
-    mounted() {
-        eventBus.$on("passIdxToCreateBtn", this.changeContentIdx);
-    },
     methods: {
-        changeContentIdx: function(idx){
-            this.idx = idx;
+        createBtnClicked(){
+            this.isOverlaied = true;
         },
-        createBtnClicked(idx){
-            
+        changeOverlayState(){
+            this.isOverlaied = false;
         }
     },
 

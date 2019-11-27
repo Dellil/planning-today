@@ -6,9 +6,6 @@
             <app-content></app-content>
             <app-footer></app-footer>
             <app-snack-bar></app-snack-bar>
-            <!-- <v-overlay>
-                하와와와
-            </v-overlay> -->
         </v-app>
     </div>
 </template>
