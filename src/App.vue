@@ -1,10 +1,11 @@
 <template>
-    <div id="app">
+    <div id="app" ref="container">
         <v-app>
             <app-header></app-header>
             <app-menu></app-menu>
             <app-content></app-content>
             <app-footer></app-footer>
+            <app-snack-bar></app-snack-bar>
         </v-app>
     </div>
 </template>
@@ -14,19 +15,16 @@ import HeaderComponent from './component/HeaderComponent.vue';
 import MenuComponent from './component/menu/MenuComponent.vue';
 import ContentDomainComponent from './component/content/ContentDomainComponent.vue';
 import FooterComponent from './component/FooterComponent.vue';
+import SnackBarComponent from './component/SnackBarComponent.vue';
 
 export default {
     components : {
         'app-header': HeaderComponent,
         'app-menu': MenuComponent,
         'app-content': ContentDomainComponent,
-        'app-footer': FooterComponent
+        'app-footer': FooterComponent,
+        'app-snack-bar': SnackBarComponent
     },
-    // data() {
-    //     return {
-            
-    //     }
-    // },
     created() {
         this.$vuetify.theme.dark = true
     }

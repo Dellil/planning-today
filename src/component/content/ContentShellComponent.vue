@@ -8,7 +8,7 @@
             <v-sheet
             width="100%"
             height="100%"
-            class="ml-4"
+
             >
                 <template>
                     <component :is="componentInstance" />

@@ -1,10 +1,9 @@
 <template>
     <v-content>
-        <!-- <v-sheet 
-        class="d-flex justify-center">
-            <app-content-shell></app-content-shell>
-        </v-sheet> -->
-        <v-container fill-height>
+        <v-container 
+        fill-height 
+        class="ml-4"
+        >
             <app-content-menu></app-content-menu>
             <app-content-shell></app-content-shell>
         </v-container>

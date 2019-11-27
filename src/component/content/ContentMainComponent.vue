@@ -1,56 +1,55 @@
 <template>
     <v-container>
-        <v-row 
-        align="center"
+        <v-card
+        class="my-3 py-1"
         v-for="(item, i) in items" 
         :key="i"
         >
-            <v-col 
-            cols="1"
+            <v-row 
+            align="center"
             >
-                <v-btn
-                block
-                :text="item.textState"
-                :color="item.color"
-
-                @click="btnClicked(item)"
+                <v-col
+                cols="1"
                 >
-                    <v-icon 
-                    v-text="item.icon" 
-                    :color="item.iconColor"
+                    <v-btn
+                    block
+                    :text="item.textState"
+                    :color="item.color"
+                    @click="checkBtnClicked(item)"
+                    class="ml-1"
                     >
-                    </v-icon>
-                </v-btn>
-            </v-col>
-            <v-col 
-            cols="8"
-            >
-            {{ item.text }}
-            </v-col>
-            <v-col
-            cols="2"
-            class="text-center"
-            >
-            {{ item.order }}
-            </v-col>
-            <v-col cols="1">
-                <v-btn
-                block
-                text
+                        <v-icon
+                        v-text="item.icon" 
+                        :color="item.iconColor"
+                        >
+                        </v-icon>
+                    </v-btn>
+                </v-col>
+                <v-col 
+                cols="10"
                 >
-                    <v-icon 
-                    v-text="mdiDelete"
+                {{ item.text }}
+                </v-col>
+                <v-col cols="1">
+                    <v-btn
+                    block
+                    text
+                    class="ml-n1"
+                    @click="deleteBtnClicked(item.idx)"
                     >
-                    </v-icon>
-                </v-btn>
-            </v-col>
-        </v-row>
+                        <v-icon>
+                        {{mdiDelete}}
+                        </v-icon>
+                    </v-btn>
+                </v-col>
+            </v-row>
+        </v-card>
     </v-container>
 </template>
 
 <script>
 import { mdiCheck, mdiCheckOutline, mdiDelete } from '@mdi/js';
-import { isBuffer } from 'util';
+import eventBus from '../../utils/eventBus.js';
 
 export default {
     data() {
@@ -114,7 +113,7 @@ export default {
         }
     },
     methods: {
-        btnClicked: function(item){
+        checkBtnClicked: function(item){
             if(!item.isChecked){    
                 item.color = 'grey darken-1';
             }else{
@@ -122,6 +121,10 @@ export default {
             }
             item.isChecked = !item.isChecked;
             item.textState = !item.textState;
+        },
+        deleteBtnClicked: function(idx){
+            console.log("delete button clicked");
+            eventBus.$emit("setSnackBar", { text: 'Removed Successfully!' });
         }
     },
 }
