@@ -6,7 +6,7 @@
                 large
                 @click="createBtnClicked()"
                 >
-                Create
+                Add
                 </v-btn>
                 <v-btn
                 large
@@ -14,17 +14,21 @@
                 >
                 Delete
                 </v-btn>
-                <app-item-overlay :value="isOverlaied" @overlayClosed="changeOverlayState"></app-item-overlay>
+                <app-item-dialog
+                :value="isOverlaied" 
+                @overlayClosed="changeOverlayState"
+                >
+                </app-item-dialog>
             </div>
         </v-col>
     </v-row>
 </template>
 
 <script>
-import ItemOverlay from '../fixed/ItemOverlay.vue';
+import ItemDialog from '../fixed/ItemDialog.vue';
 export default {
     components: {
-        'app-item-overlay': ItemOverlay
+        'app-item-dialog': ItemDialog
     },
     data() {
         return {
