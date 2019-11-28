@@ -1,10 +1,16 @@
 <template>
     <div id="app">
         <v-app>
-            <app-header></app-header>
-            <app-menu></app-menu>
+            <header>
+                <app-header></app-header>
+            </header>
+            <aside>
+                <app-menu></app-menu>
+            </aside>
             <app-content></app-content>
-            <app-footer></app-footer>
+            <footer>
+                <app-footer></app-footer>
+            </footer>
             <app-snack-bar></app-snack-bar>
         </v-app>
     </div>
