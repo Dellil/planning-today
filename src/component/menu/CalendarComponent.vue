@@ -7,6 +7,7 @@
         width="100%"
         height="100%"
         v-model="picker"
+        @change="displayDate"
         >
         </v-date-picker>
     </v-sheet>
@@ -18,7 +19,12 @@ export default {
         return {
             picker: new Date().toISOString().substr(0, 10)
         }
-    }
+    },
+    methods: {
+        displayDate: function(date) {
+            console.log(date);
+        }
+    },
 }
 </script>
 

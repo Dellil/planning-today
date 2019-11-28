@@ -8,12 +8,6 @@
                 >
                 Add
                 </v-btn>
-                <v-btn
-                large
-                class="ml-4"
-                >
-                Delete
-                </v-btn>
                 <app-item-dialog
                 :value="isOverlaied" 
                 @overlayClosed="changeOverlayState"
