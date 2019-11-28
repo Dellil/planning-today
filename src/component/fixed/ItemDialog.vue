@@ -13,6 +13,7 @@
                             <v-col>
                                 <v-checkbox
                                 :label="checkBoxText"
+                                @change="todayChecked"
                                 >
                                 </v-checkbox>
                             </v-col>
@@ -168,6 +169,10 @@ export default {
             eventBus.$emit("setSnackBar", {
                 text: 'Add Item Successfully!'
             })
+        },
+        todayChecked: function(isChecked){
+            this.startDate = isChecked ? new Date().toISOString().substr(0, 10) : '';
+            this.endDate = isChecked ? new Date().toISOString().substr(0, 10) : '';
         }
     },
 }
