@@ -5,7 +5,11 @@
     :value="value"
     >
         <v-card>
-            <v-form>
+            <v-form
+            ref="form"
+            v-model="valid"
+            lazy-validation
+            >
                 <v-card-title>Add Your Plan</v-card-title>
                 <v-card-text>
                     <v-container>
@@ -40,6 +44,8 @@
                                         color="pink dark-1"
                                         v-model="startDate"
                                         v-on="on"
+                                        :rules="startDateRules"
+                                        required
                                         >
                                         </v-text-field>
                                     </template>
@@ -89,6 +95,8 @@
                                         color="pink dark-1"
                                         v-model="endDate"
                                         v-on="on"
+                                        :rules="endDateRules"
+                                        required
                                         >
                                         </v-text-field>
                                     </template>
@@ -97,6 +105,7 @@
                                     no-title
                                     scrollable
                                     v-model="endDate"
+                                    :allowed-dates="allowedDates"
                                     >
                                         <v-spacer></v-spacer>
                                         <v-btn
@@ -117,12 +126,16 @@
                                 </v-menu>
                             </v-col>
                         </v-row>
+
+                        <!-- CONTENT -->
                         <v-row>
                             <v-col>
                                 <v-text-field
                                 outlined
                                 label="Content"
                                 color="pink dark-1"
+                                :rules="contentRules"
+                                required
                                 >
                                 </v-text-field>
                             </v-col>
@@ -140,7 +153,7 @@
                     </v-btn>
                     <v-btn
                     outlined
-                    @click="closeBtnClicked"
+                    @click="addBtnClicked"
                     >
                     ADD
                     </v-btn>
@@ -156,6 +169,20 @@ export default {
     props: ['value'],
     data() {
         return {
+            // FORM
+            valid: true,
+            // FORM VALIDATION
+            contentRules: [
+                v => !!v || 'Content is required'
+            ],
+            startDateRules: [
+                v => !!v || 'StartDate is required',
+            ],
+            endDateRules: [
+                v => !!v || 'EndDate is required',
+                v => this.startDate <= v || 'EndDate should be higher than StartDate'
+            ],
+            // MENU
             checkBoxText: 'Today',
             startMenu: false,
             startDate: '',
@@ -164,15 +191,23 @@ export default {
         }
     },
     methods: {
+        addBtnClicked: function() {
+            if(this.$refs.form.validate()){
+                this.$emit("overlayClosed");
+                eventBus.$emit("setSnackBar", { text: 'Add Item Successfully!'});
+            }else {
+                eventBus.$emit("setSnackBar", { text: 'Failed to add Item' });
+            }
+        },
         closeBtnClicked: function(){
-            this.$emit("overlayClosed");
-            eventBus.$emit("setSnackBar", {
-                text: 'Add Item Successfully!'
-            })
+            this.$emit("overlayClosed");  
         },
         todayChecked: function(isChecked){
             this.startDate = isChecked ? new Date().toISOString().substr(0, 10) : '';
             this.endDate = isChecked ? new Date().toISOString().substr(0, 10) : '';
+        },
+        allowedDates: function(val){
+            return this.startDate <= val
         }
     },
 }

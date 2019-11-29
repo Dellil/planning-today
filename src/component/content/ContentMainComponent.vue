@@ -109,7 +109,7 @@ export default {
     },
     methods: {
         checkBtnClicked: function(item){
-            if(!item.isChecked){    
+            if(!item.isChecked){
                 item.color = 'grey darken-1';
             }else{
                 item.color = 'white';
