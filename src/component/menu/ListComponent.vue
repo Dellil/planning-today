@@ -33,7 +33,7 @@ export default {
                     icon : mdiPlaylistEdit
                 },
                 {
-                    title : "SET THE DATE RANGE",
+                    title : "THE DATE RANGE",
                     subtitle: "WORKS DATE RANGE",
                     icon : mdiCalendarRange
                 }
