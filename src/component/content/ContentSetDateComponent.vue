@@ -13,7 +13,7 @@
                 cols="2"
                 class="text-center ml-2"
                 >
-                {{ item.toDate }}
+                {{ item.startDate }}
                 </v-col>
                 <v-col 
                 cols="2"
@@ -25,7 +25,7 @@
                 <v-col 
                 cols="7"
                 >
-                {{ item.text }}
+                {{ item.content }}
                 </v-col>
                 <!-- DELETE-->
                 <v-col 
@@ -50,42 +50,26 @@
 <script>
 import eventBus from '../../utils/eventBus.js';
 import { mdiDelete } from '@mdi/js';
+import { getDateListStore, removeDateItem } from '../../utils/dataStore.js';
 
 export default {
     data(){
         return {
             mdiDelete: mdiDelete,
-            items: [
-                {
-                    toDate: '2019-11-26',
-                    endDate: '2019-11-30',
-                    text: '12시 취침',
-                    idx: 1
-                },
-                {
-                    toDate: '2019-12-11',
-                    endDate: '2019-12-30',
-                    text: '운동가기',
-                    idx: 2
-                },
-                {
-                    toDate: '2019-09-18',
-                    endDate: '2019-11-21',
-                    text: '디자인 패턴',
-                    idx: 3
-                },
-                {
-                    toDate: '2019-08-01',
-                    endDate: '2019-10-29',
-                    text: '백수짓',
-                    idx: 4
-                }
-            ]
+            items: []
         }
+    },
+    mounted() {
+        this.changeItems(getDateListStore());
+        eventBus.$on("dateItemAdded", this.changeItems);
     },
     methods: {
         deleteBtnClicked: function(idx){
+            this.items = removeDateItem(idx);
             eventBus.$emit("setSnackBar", { text: 'Date Range Item Removed Successfully!', component: 'date', idx: idx })
+        },
+        changeItems: function(list){
+            this.items = list;
         }
     },
 }

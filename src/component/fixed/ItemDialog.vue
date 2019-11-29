@@ -18,6 +18,7 @@
                                 <v-checkbox
                                 :label="checkBoxText"
                                 @change="todayChecked"
+                                v-model="checkbox"
                                 >
                                 </v-checkbox>
                             </v-col>
@@ -32,6 +33,7 @@
                                 max-width="400px"
                                 ref="startMenu"
                                 :close-on-content-click="false"
+                                :close-on-click="false"
                                 :return-value.sync="startDate"
                                 transition="slide-x-transition"
                                 offset-y
@@ -136,6 +138,7 @@
                                 color="pink dark-1"
                                 :rules="contentRules"
                                 required
+                                v-model="content"
                                 >
                                 </v-text-field>
                             </v-col>
@@ -165,6 +168,8 @@
 
 <script>
 import eventBus from '../../utils/eventBus.js';
+import { addItem } from '../../utils/dataStore.js';
+
 export default {
     props: ['value'],
     data() {
@@ -184,15 +189,40 @@ export default {
             ],
             // MENU
             checkBoxText: 'Today',
+            checkbox: false,
             startMenu: false,
             startDate: '',
             endMenu: false,
-            endDate: ''
+            endDate: '',
+            content: ''
+        }
+    },
+    watch: {
+        startDate: function(v){
+            let d = new Date().toISOString().substr(0, 10);
+            if( v == d && this.endDate == d){
+                this.checkbox = true;
+            }else{
+                this.checkbox = false
+            }
+        },
+        endDate: function(v){
+            let d = new Date().toISOString().substr(0, 10);
+            if( v == d && this.startDate == d){
+                this.checkbox = true;
+            }else{
+                this.checkbox = false;
+            }
         }
     },
     methods: {
         addBtnClicked: function() {
             if(this.$refs.form.validate()){
+                addItem({
+                    startDate: this.startDate,
+                    endDate: this.endDate,
+                    content: this.content
+                });
                 this.$emit("overlayClosed");
                 eventBus.$emit("setSnackBar", { text: 'Add Item Successfully!'});
             }else {
@@ -208,6 +238,13 @@ export default {
         },
         allowedDates: function(val){
             return this.startDate <= val
+        },
+        changeDate: function(){
+            if(this.startDate === this.endDate){
+                this.checkbox = true;
+            }else{
+                this.checkbox = false;
+            }
         }
     },
 }

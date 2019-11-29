@@ -10,9 +10,11 @@
             height="100%"
 
             >
-                <template>
-                    <component :is="componentInstance" />
-                </template>
+                <keep-alive>
+                    <template>
+                        <component :is="componentInstance" />
+                    </template>
+                </keep-alive>
             </v-sheet>
         </v-col>
     </v-row>

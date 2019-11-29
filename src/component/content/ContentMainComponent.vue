@@ -27,8 +27,8 @@
                 </v-col>
                 <v-col 
                 cols="10"
+                v-text="item.content"
                 >
-                {{ item.text }}
                 </v-col>
                 <v-col cols="1">
                     <v-btn
@@ -50,6 +50,7 @@
 <script>
 import { mdiCheck, mdiCheckOutline, mdiDelete } from '@mdi/js';
 import eventBus from '../../utils/eventBus.js';
+import {getChkListStore, removeChkItem} from '../../utils/dataStore.js';
 
 export default {
     data() {
@@ -57,55 +58,12 @@ export default {
             mdiCheck: mdiCheck,
             mdiCheckOutline: mdiCheckOutline,
             mdiDelete: mdiDelete,
-            // Mock Object
-            items: [
-                {
-                    isChecked: false,
-                    textState: true,
-                    color: 'white',
-                    icon: mdiCheck,
-                    iconColor: "white",
-                    text: '새벽기상',
-                    idx: 1
-                },
-                {
-                    isChecked: false,
-                    textState: true,
-                    color: 'white',
-                    icon: mdiCheck,
-                    iconColor: "white",
-                    text: '알고리즘 문제 풀기',
-                    idx: 2
-                },
-                {
-                    isChecked: false,
-                    textState: true,
-                    color: 'white',
-                    icon: mdiCheck,
-                    iconColor: "white",
-                    text: '독서',
-                    idx: 3
-                },
-                {
-                    isChecked: false,
-                    textState: true,
-                    color: 'white',
-                    icon: mdiCheck,
-                    iconColor: "white",
-                    text: '집안일',
-                    idx: 4
-                },
-                {
-                    isChecked: false,
-                    textState: true,
-                    color: 'white',
-                    icon: mdiCheck,
-                    iconColor: "white",
-                    text: '롸?',
-                    idx: 5
-                }
-            ]
+            items: []
         }
+    },
+    mounted() {
+        this.changeItems(getChkListStore());
+        eventBus.$on("chkItemAdded", this.changeItems);
     },
     methods: {
         checkBtnClicked: function(item){
@@ -118,8 +76,23 @@ export default {
             item.textState = !item.textState;
         },
         deleteBtnClicked: function(idx){
+            this.items = removeChkItem(idx);
             eventBus.$emit("setSnackBar", { text: 'Check List Item Removed Successfully!', component: 'main', idx: idx });
+        },
+        changeItems: function(list) {
+            this.items = list;
         }
+        // addItem: function(item){
+        //     this.items.push({
+        //         isChecked: false,
+        //         textState: true,
+        //         color: 'white',
+        //         icon: this.mdiCheck,
+        //         iconColor: 'white',
+        //         content: item.content,
+        //         idx: this.items.length+1           
+        //     });
+        // }
     },
 }
 </script>

@@ -7,7 +7,6 @@
         width="100%"
         height="100%"
         v-model="picker"
-        @change="displayDate"
         >
         </v-date-picker>
     </v-sheet>
@@ -21,9 +20,10 @@ export default {
         }
     },
     methods: {
-        displayDate: function(date) {
-            console.log(date);
-        }
+        // For test
+        // displayDate: function(date) {
+        //     console.log(date);
+        // }
     },
 }
 </script>

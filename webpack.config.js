@@ -55,7 +55,8 @@ module.exports = {
         new VueLoaderPlugin(),
         new VuetifyLoaderPlugin(),
         new HtmlWebPackPlugin({
-            template: './src/index.html'
+            template: './src/index.html',
+            favicon: 'favicon.png'
         }),
         new MiniCssExtractPlugin({"filename":"style.css"}),
         new webpack.HotModuleReplacementPlugin()
